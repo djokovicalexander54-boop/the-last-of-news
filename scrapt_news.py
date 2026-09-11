@@ -234,29 +234,18 @@ async def start_new_04():
     doc_T.build(story)
     print("ok technology", flush=True)
     return "pdf_Technology.pdf"
-async def run_help(func):
-    if func == start_new_01:
-        pdf_E = await func()
-    elif func == start_new_02:
-        pdf_P = await func()
-    elif func == start_new_03:
-        pdf_M = await func()
-    elif func == start_new_04:
-        pdf_T = await func()
-    return [pdf_E ,pdf_P, pdf_M, pdf_T]
 async def main():
-    task=[
-        asyncio.create_task(run_help(start_new_01)),
-        asyncio.create_task(run_help(start_new_02)),
-        asyncio.create_task(run_help(start_new_03)),
-        asyncio.create_task(run_help(start_new_04))
-    ]
-    await asyncio.gather(*task)
-asyncio.run(main())
+    pdf_E, pdf_P, pdf_M, pdf_T = await asyncio.gather(
+        start_new_01,
+        start_new_02,
+        start_new_03,
+        start_new_04
+    )
+    return [pdf_E, pdf_P, pdf_M, pdf_T]
 app = Flask(__name__)
 @app.route("/")
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    pdf = await run_help()
+    pdf = await main()
     await context.bot.send_message(chat_id=7737231906 ,text="در حال بررسی")
     if pdf:
         await context.bot.send_document(chat_id=7737231906 , document=open(pdf[0], "rb"), caption="اخبار اقتصادی و مالی")
