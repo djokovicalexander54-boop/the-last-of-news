@@ -1,5 +1,6 @@
 import trafilatura
 import json
+import asyncio
 import requests
 from flask import Flask
 import threading
@@ -210,6 +211,7 @@ async def start_new():
                 story.append(Spacer(1, 8))
         doc_T.build(story)
     return ["pdf_Economic.pdf", "pdf_Policy.pdf", "pdf_Military.pdf", "pdf_Technology.pdf"]
+asyncio.run(start_new())
 app = Flask(__name__)
 @app.route("/")
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
