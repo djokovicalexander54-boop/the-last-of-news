@@ -245,7 +245,7 @@ async def main():
 app = Flask(__name__)
 @app.route("/")
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    pdf = await asyncio.run(main())
+    pdf = await main()
     await context.bot.send_message(chat_id=7737231906 ,text="در حال بررسی")
     if pdf:
         await context.bot.send_document(chat_id=7737231906 , document=open(pdf[0], "rb"), caption="اخبار اقتصادی و مالی")
