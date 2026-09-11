@@ -77,30 +77,33 @@ async def start_new():
     # economic
     with open("economic.txt", "r", encoding="utf-8") as file:
         i=1
-        try:
-            long_text_economic = ""
-            for line in file:
-                oop = ["https://", line]
-                item = "".join(oop)
-                url = item.strip()
-                print(f"{i}***{url}")
-                site_path = requests.get(url)
-                new_data = trafilatura.extract(
-                    site_path.text,
-                    output_format="json",
-                    include_comments=False,
-                    target_language='fa',
-                )
-                if new_data:
-                    data_note = json.loads(new_data)
-                    text = data_note.get('text')
-                    long_text_economic+=f"{text}\n--------------------"
-                    print(f'{i}-->economic', flush=True)
-                    i+=1
-                    if i==10:
-                        break
-        except Exception as e:            
-            print("yes econimic..", flush=True)
+        k=1
+        while k==1:
+            try:
+                long_text_economic = ""
+                for line in file:
+                    oop = ["https://", line]
+                    item = "".join(oop)
+                    url = item.strip()
+                    print(f"{i}***{url}")
+                    site_path = requests.get(url)
+                    new_data = trafilatura.extract(
+                        site_path.text,
+                        output_format="json",
+                        include_comments=False,
+                        target_language='fa',
+                    )
+                    if new_data:
+                        data_note = json.loads(new_data)
+                        text = data_note.get('text')
+                        long_text_economic+=f"{text}\n--------------------"
+                        print(f'{i}-->economic', flush=True)
+                        i+=1
+                        if i==10:
+                            k=2
+                            break
+            except Exception as e:          
+                print("yes econimic..", flush=True)
         story = []
         lines = long_text_economic.split('\n')
         for line in lines:
@@ -112,30 +115,33 @@ async def start_new():
     # policy
     with open("policy.txt", "r", encoding="utf-8") as file:
         i=1
-        try:
-            long_text_policy = ""
-            for line in file:
-                oop = ["https://", line]
-                item = "".join(oop)
-                url = item.strip()
-                print(f"{i}***{url}")
-                site_path = requests.get(url)
-                new_data = trafilatura.extract(
-                    site_path.text,
-                    output_format="json",
-                    include_comments=False,
-                    target_language='fa',
-                )
-                if new_data:
-                    data_note = json.loads(new_data)
-                    text = data_note.get('text')
-                    long_text_policy+=f"{text}\n--------------------"
-                    print(f'{i}-->policy', flush=True)
-                    i+=1
-                    if i==10:
-                        break
-        except Exception as e:            
-            print("yes policy..", flush=True)
+        k=1
+        while k==1:
+            try:
+                long_text_policy = ""
+                for line in file:
+                    oop = ["https://", line]
+                    item = "".join(oop)
+                    url = item.strip()
+                    print(f"{i}***{url}")
+                    site_path = requests.get(url)
+                    new_data = trafilatura.extract(
+                        site_path.text,
+                        output_format="json",
+                        include_comments=False,
+                        target_language='fa',
+                    )
+                    if new_data:
+                        data_note = json.loads(new_data)
+                        text = data_note.get('text')
+                        long_text_policy+=f"{text}\n--------------------"
+                        print(f'{i}-->policy', flush=True)
+                        i+=1
+                        if i==10:
+                            k=2
+                            break
+            except Exception as e:            
+                print("yes policy..", flush=True)
         story = []
         lines = long_text_policy.split('\n')
         for line in lines:
@@ -147,30 +153,33 @@ async def start_new():
     # military
     with open("military.txt", "r", encoding="utf-8") as file:
         i=1
-        try:
-            long_text_military = ""
-            for line in file:
-                oop = ["https://", line]
-                item = "".join(oop)
-                url = item.strip()
-                print(f"{i}***{url}")
-                site_path = requests.get(url)
-                new_data = trafilatura.extract(
-                    site_path.text,
-                    output_format="json",
-                    include_comments=False,
-                    target_language='fa',
-                )
-                if new_data:
-                    data_note = json.loads(new_data)
-                    text = data_note.get('text')
-                    long_text_military+=f"{text}\n--------------------"
-                    print(f'{i}-->military', flush=True)
-                    i+=1
-                    if i==10:
-                        break
-        except Exception as e:            
-            print("yes military..", flush=True)
+        k=1
+        while k==1:
+            try:
+                long_text_military = ""
+                for line in file:
+                    oop = ["https://", line]
+                    item = "".join(oop)
+                    url = item.strip()
+                    print(f"{i}***{url}")
+                    site_path = requests.get(url)
+                    new_data = trafilatura.extract(
+                        site_path.text,
+                        output_format="json",
+                        include_comments=False,
+                        target_language='fa',
+                    )
+                    if new_data:
+                        data_note = json.loads(new_data)
+                        text = data_note.get('text')
+                        long_text_military+=f"{text}\n--------------------"
+                        print(f'{i}-->military', flush=True)
+                        i+=1
+                        if i==10:
+                            k=2
+                            break
+            except Exception as e:            
+                print("yes military..", flush=True)
         story = []
         lines = long_text_military.split('\n')
         for line in lines:
@@ -182,30 +191,33 @@ async def start_new():
     # technology
     with open("technology.txt", "r", encoding="utf-8") as file:
         i=1
-        try:
-            long_text_technology = ""
-            for line in file:
-                oop = ["https://", line]
-                item = "".join(oop)
-                url = item.strip()
-                print(f"{i}***{url}")
-                site_path = requests.get(url)
-                new_data = trafilatura.extract(
-                    site_path.text,
-                    output_format="json",
-                    include_comments=False,
-                    target_language='fa',
-                )
-                if new_data:
-                    data_note = json.loads(new_data)
-                    text = data_note.get('text')
-                    long_text_technology+=f"{text}\n--------------------"
-                    print(f'{i}-->technology', flush=True)
-                    i+=1
-                    if i==10:
-                        break
-        except Exception as e:            
-            print("yes technology..", flush=True)
+        k=1
+        while k==1:
+            try:
+                long_text_technology = ""
+                for line in file:
+                    oop = ["https://", line]
+                    item = "".join(oop)
+                    url = item.strip()
+                    print(f"{i}***{url}")
+                    site_path = requests.get(url)
+                    new_data = trafilatura.extract(
+                        site_path.text,
+                        output_format="json",
+                        include_comments=False,
+                        target_language='fa',
+                    )
+                    if new_data:
+                        data_note = json.loads(new_data)
+                        text = data_note.get('text')
+                        long_text_technology+=f"{text}\n--------------------"
+                        print(f'{i}-->technology', flush=True)
+                        i+=1
+                        if i==10:
+                            k=2
+                            break
+            except Exception as e:            
+                print("yes technology..", flush=True)
         story = []
         lines = long_text_technology.split('\n')
         for line in lines:
