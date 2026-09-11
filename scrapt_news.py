@@ -236,17 +236,17 @@ async def start_new_04():
     return "pdf_Technology.pdf"
 async def main():
     pdf_E, pdf_P, pdf_M, pdf_T = await asyncio.gather(
-        start_new_01,
-        start_new_02,
-        start_new_03,
-        start_new_04
+        start_new_01(),
+        start_new_02(),
+        start_new_03(),
+        start_new_04()
     )
     return [pdf_E, pdf_P, pdf_M, pdf_T]
 app = Flask(__name__)
 @app.route("/")
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    pdf = await main()
     await context.bot.send_message(chat_id=7737231906 ,text="در حال بررسی")
+    pdf = await main()
     if pdf:
         await context.bot.send_document(chat_id=7737231906 , document=open(pdf[0], "rb"), caption="اخبار اقتصادی و مالی")
         await context.bot.send_document(chat_id=7737231906 , document=open(pdf[1], "rb"), caption="اخبار سیاسی")
