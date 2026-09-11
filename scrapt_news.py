@@ -83,6 +83,7 @@ async def start_new():
                 oop = ["https://", line]
                 item = "".join(oop)
                 url = item.strip()
+                print(f"{i}***{url}")
                 site_path = requests.get(url)
                 new_data = trafilatura.extract(
                     site_path.text,
@@ -117,6 +118,7 @@ async def start_new():
                 oop = ["https://", line]
                 item = "".join(oop)
                 url = item.strip()
+                print(f"{i}***{url}")
                 site_path = requests.get(url)
                 new_data = trafilatura.extract(
                     site_path.text,
@@ -151,6 +153,7 @@ async def start_new():
                 oop = ["https://", line]
                 item = "".join(oop)
                 url = item.strip()
+                print(f"{i}***{url}")
                 site_path = requests.get(url)
                 new_data = trafilatura.extract(
                     site_path.text,
@@ -185,6 +188,7 @@ async def start_new():
                 oop = ["https://", line]
                 item = "".join(oop)
                 url = item.strip()
+                print(f"{i}***{url}")
                 site_path = requests.get(url)
                 new_data = trafilatura.extract(
                     site_path.text,
