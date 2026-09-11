@@ -85,7 +85,6 @@ async def start_new():
                     oop = ["https://", line]
                     item = "".join(oop)
                     url = item.strip()
-                    print(f"{i}***{url}")
                     site_path = requests.get(url)
                     new_data = trafilatura.extract(
                         site_path.text,
@@ -99,11 +98,11 @@ async def start_new():
                         long_text_economic+=f"{text}\n--------------------"
                         print(f'{i}-->economic', flush=True)
                         i+=1
-                        if i==10:
+                        if i==100: # 225
                             k=2
                             break
             except Exception as e:          
-                print("yes econimic..", flush=True)
+                continue
         story = []
         lines = long_text_economic.split('\n')
         for line in lines:
@@ -123,7 +122,6 @@ async def start_new():
                     oop = ["https://", line]
                     item = "".join(oop)
                     url = item.strip()
-                    print(f"{i}***{url}")
                     site_path = requests.get(url)
                     new_data = trafilatura.extract(
                         site_path.text,
@@ -137,11 +135,11 @@ async def start_new():
                         long_text_policy+=f"{text}\n--------------------"
                         print(f'{i}-->policy', flush=True)
                         i+=1
-                        if i==10:
+                        if i==100: # 225
                             k=2
                             break
             except Exception as e:            
-                print("yes policy..", flush=True)
+                continue
         story = []
         lines = long_text_policy.split('\n')
         for line in lines:
@@ -161,7 +159,6 @@ async def start_new():
                     oop = ["https://", line]
                     item = "".join(oop)
                     url = item.strip()
-                    print(f"{i}***{url}")
                     site_path = requests.get(url)
                     new_data = trafilatura.extract(
                         site_path.text,
@@ -175,11 +172,11 @@ async def start_new():
                         long_text_military+=f"{text}\n--------------------"
                         print(f'{i}-->military', flush=True)
                         i+=1
-                        if i==10:
+                        if i==100: # 225
                             k=2
                             break
             except Exception as e:            
-                print("yes military..", flush=True)
+                continue
         story = []
         lines = long_text_military.split('\n')
         for line in lines:
@@ -199,7 +196,6 @@ async def start_new():
                     oop = ["https://", line]
                     item = "".join(oop)
                     url = item.strip()
-                    print(f"{i}***{url}")
                     site_path = requests.get(url)
                     new_data = trafilatura.extract(
                         site_path.text,
@@ -213,11 +209,11 @@ async def start_new():
                         long_text_technology+=f"{text}\n--------------------"
                         print(f'{i}-->technology', flush=True)
                         i+=1
-                        if i==10:
+                        if i==100: # 225
                             k=2
                             break
             except Exception as e:            
-                print("yes technology..", flush=True)
+                continue
         story = []
         lines = long_text_technology.split('\n')
         for line in lines:
@@ -226,6 +222,7 @@ async def start_new():
                 story.append(Paragraph(pdf_file, farsi_style))
                 story.append(Spacer(1, 8))
         doc_T.build(story)
+    print("END", flush=True)
     return ["pdf_Economic.pdf", "pdf_Policy.pdf", "pdf_Military.pdf", "pdf_Technology.pdf"]
 asyncio.run(start_new())
 app = Flask(__name__)
