@@ -99,7 +99,7 @@ async def start_new_01():
                         long_text_economic+=f"{text}\n--------------------"
                         print(f'{i}-->economic', flush=True)
                         i+=1
-                        if i==50:
+                        if i==20:
                             k=2 
                             break
             except Exception as e:         
@@ -139,7 +139,7 @@ async def start_new_02():
                         long_text_policy+=f"{text}\n--------------------"
                         print(f'{i}-->policy', flush=True)
                         i+=1
-                        if i==50:
+                        if i==20:
                             k=2 
                             break
             except Exception as e:            
@@ -179,7 +179,7 @@ async def start_new_03():
                         long_text_military+=f"{text}\n--------------------"
                         print(f'{i}-->military', flush=True)
                         i+=1
-                        if i==50:
+                        if i==20:
                             k=2 
                             break
             except Exception as e:            
@@ -219,19 +219,19 @@ async def start_new_04():
                         long_text_technology+=f"{text}\n--------------------"
                         print(f'{i}-->technology', flush=True)
                         i+=1
-                        if i==50:
+                        if i==20:
                             k=2 
                             break
             except Exception as e:            
                 continue
-    story = []
+    story_04 = []
     lines = long_text_technology.split('\n')
     for line in lines:
         if line.strip():
             pdf_file = get_display(arabic_reshaper.reshape(line))
-            story.append(Paragraph(pdf_file, farsi_style))
-            story.append(Spacer(1, 8))
-    doc_T.build(story)
+            story_04.append(Paragraph(pdf_file, farsi_style))
+            story_04.append(Spacer(1, 8))
+    doc_T.build(story_04)
     print("ok technology", flush=True)
     return "pdf_Technology.pdf"
 async def main():
