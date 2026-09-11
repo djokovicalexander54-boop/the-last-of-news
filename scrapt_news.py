@@ -85,7 +85,7 @@ async def start_new_01():
                     oop = ["https://", line]
                     item = "".join(oop)
                     url = item.strip()
-                    site_path = requests.get(url, timeout=20)
+                    site_path = requests.get(url, timeout=10)
                     new_data = trafilatura.extract(
                         site_path.text,
                         output_format="json",
@@ -98,7 +98,7 @@ async def start_new_01():
                         long_text_economic+=f"{text}\n--------------------"
                         print(f'{i}-->economic', flush=True)
                         i+=1
-                        if i==100:
+                        if i==50:
                             k=2 
                             break
             except Exception as e:         
@@ -125,7 +125,7 @@ async def start_new_02():
                     oop = ["https://", line]
                     item = "".join(oop)
                     url = item.strip()
-                    site_path = requests.get(url, timeout=20)
+                    site_path = requests.get(url, timeout=10)
                     new_data = trafilatura.extract(
                         site_path.text,
                         output_format="json",
@@ -138,7 +138,7 @@ async def start_new_02():
                         long_text_policy+=f"{text}\n--------------------"
                         print(f'{i}-->policy', flush=True)
                         i+=1
-                        if i==100:
+                        if i==50:
                             k=2 
                             break
             except Exception as e:            
@@ -165,7 +165,7 @@ async def start_new_03():
                     oop = ["https://", line]
                     item = "".join(oop)
                     url = item.strip()
-                    site_path = requests.get(url, timeout=20)
+                    site_path = requests.get(url, timeout=10)
                     new_data = trafilatura.extract(
                         site_path.text,
                         output_format="json",
@@ -178,7 +178,7 @@ async def start_new_03():
                         long_text_military+=f"{text}\n--------------------"
                         print(f'{i}-->military', flush=True)
                         i+=1
-                        if i==100:
+                        if i==50:
                             k=2 
                             break
             except Exception as e:            
@@ -205,7 +205,7 @@ async def start_new_04():
                     oop = ["https://", line]
                     item = "".join(oop)
                     url = item.strip()
-                    site_path = requests.get(url, timeout=20)
+                    site_path = requests.get(url, timeout=10)
                     new_data = trafilatura.extract(
                         site_path.text,
                         output_format="json",
@@ -218,7 +218,7 @@ async def start_new_04():
                         long_text_technology+=f"{text}\n--------------------"
                         print(f'{i}-->technology', flush=True)
                         i+=1
-                        if i==100:
+                        if i==50:
                             k=2 
                             break
             except Exception as e:            
