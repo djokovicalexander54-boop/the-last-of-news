@@ -6,5 +6,5 @@ python-bidi
 anthropic
 pyTelegramBotAPI
 python-telegram-bot
-requests
+cloudscraper
 trafilatura
