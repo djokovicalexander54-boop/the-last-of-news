@@ -1,0 +1,10 @@
+flask
+psycopg2-binary
+reportlab
+arabic-reshaper
+python-bidi
+anthropic
+pyTelegramBotAPI
+python-telegram-bot
+requests
+trafilatura
