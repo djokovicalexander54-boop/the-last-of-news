@@ -251,6 +251,7 @@ async def main():
         asyncio.create_task(run_help(start_new_04))
     ]
     await asyncio.gather(*task)
+asyncio.run(main())
 app = Flask(__name__)
 @app.route("/")
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
