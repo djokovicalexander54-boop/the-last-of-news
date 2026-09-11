@@ -1,10 +1,10 @@
 import trafilatura
 import json
 import asyncio
-import requests
 from flask import Flask
 import threading
 import os
+import cloudscraper
 from telegram import Update
 from telegram.ext import Application, ContextTypes, CommandHandler
 from telegram import Bot
@@ -73,6 +73,7 @@ english_style = ParagraphStyle(
     leading=18,
     alignment=0
 )
+scraper = cloudscraper.create_scraper(browser={'browser':'chrome', 'platform':'windows','desktop':True})
 async def start_new_01():
     # economic
     with open("economic.txt", "r", encoding="utf-8") as file:
@@ -85,7 +86,7 @@ async def start_new_01():
                     oop = ["https://", line]
                     item = "".join(oop)
                     url = item.strip()
-                    site_path = requests.get(url, timeout=10)
+                    site_path = await asyncio.to_thread(scraper.get, url, timeout=10)
                     new_data = trafilatura.extract(
                         site_path.text,
                         output_format="json",
@@ -125,7 +126,7 @@ async def start_new_02():
                     oop = ["https://", line]
                     item = "".join(oop)
                     url = item.strip()
-                    site_path = requests.get(url, timeout=10)
+                    site_path = await asyncio.to_thread(scraper.get, url, timeout=10)
                     new_data = trafilatura.extract(
                         site_path.text,
                         output_format="json",
@@ -165,7 +166,7 @@ async def start_new_03():
                     oop = ["https://", line]
                     item = "".join(oop)
                     url = item.strip()
-                    site_path = requests.get(url, timeout=10)
+                    site_path = await asyncio.to_thread(scraper.get, url, timeout=10)
                     new_data = trafilatura.extract(
                         site_path.text,
                         output_format="json",
@@ -205,7 +206,7 @@ async def start_new_04():
                     oop = ["https://", line]
                     item = "".join(oop)
                     url = item.strip()
-                    site_path = requests.get(url, timeout=10)
+                    site_path = await asyncio.to_thread(scraper.get, url, timeout=10)
                     new_data = trafilatura.extract(
                         site_path.text,
                         output_format="json",
