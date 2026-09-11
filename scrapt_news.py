@@ -104,14 +104,14 @@ async def start_new_01():
                             break
             except Exception as e:         
                 continue
-        story_01 = []
-        lines = long_text_economic.split('\n')
-        for line in lines:
-            if line.strip():
-                pdf_file = get_display(arabic_reshaper.reshape(line))
-                story_01.append(Paragraph(pdf_file, farsi_style))
-                story_01.append(Spacer(1, 8))
-        doc_E.build(story_01)
+    story_01 = []
+    lines = long_text_economic.split('\n')
+    for line in lines:
+        if line.strip():
+            pdf_file = get_display(arabic_reshaper.reshape(line))
+            story_01.append(Paragraph(pdf_file, farsi_style))
+            story_01.append(Spacer(1, 8))
+    doc_E.build(story_01)
     print("ok economic", flush=True)
     return "pdf_Economic.pdf"
 async def start_new_02():
@@ -144,14 +144,14 @@ async def start_new_02():
                             break
             except Exception as e:            
                 continue
-        story_02 = []
-        lines = long_text_policy.split('\n')
-        for line in lines:
-            if line.strip():
-                pdf_file = get_display(arabic_reshaper.reshape(line))
-                story_02.append(Paragraph(pdf_file, farsi_style))
-                story_02.append(Spacer(1, 8))
-        doc_P.build(story_02)
+    story_02 = []
+    lines = long_text_policy.split('\n')
+    for line in lines:
+        if line.strip():
+            pdf_file = get_display(arabic_reshaper.reshape(line))
+            story_02.append(Paragraph(pdf_file, farsi_style))
+            story_02.append(Spacer(1, 8))
+    doc_P.build(story_02)
     print("ok policy", flush=True)
     return "pdf_Policy.pdf"
 async def start_new_03():
@@ -184,14 +184,14 @@ async def start_new_03():
                             break
             except Exception as e:            
                 continue
-        story_03 = []
-        lines = long_text_military.split('\n')
-        for line in lines:
-            if line.strip():
-                pdf_file = get_display(arabic_reshaper.reshape(line))
-                story_03.append(Paragraph(pdf_file, farsi_style))
-                story_03.append(Spacer(1, 8))
-        doc_M.build(story_03)
+    story_03 = []
+    lines = long_text_military.split('\n')
+    for line in lines:
+        if line.strip():
+            pdf_file = get_display(arabic_reshaper.reshape(line))
+            story_03.append(Paragraph(pdf_file, farsi_style))
+            story_03.append(Spacer(1, 8))
+    doc_M.build(story_03)
     print("ok military", flush=True)
     return "pdf_Military.pdf"
 async def start_new_04():
@@ -224,14 +224,14 @@ async def start_new_04():
                             break
             except Exception as e:            
                 continue
-        story = []
-        lines = long_text_technology.split('\n')
-        for line in lines:
-            if line.strip():
-                pdf_file = get_display(arabic_reshaper.reshape(line))
-                story.append(Paragraph(pdf_file, farsi_style))
-                story.append(Spacer(1, 8))
-        doc_T.build(story)
+    story = []
+    lines = long_text_technology.split('\n')
+    for line in lines:
+        if line.strip():
+            pdf_file = get_display(arabic_reshaper.reshape(line))
+            story.append(Paragraph(pdf_file, farsi_style))
+            story.append(Spacer(1, 8))
+    doc_T.build(story)
     print("ok technology", flush=True)
     return "pdf_Technology.pdf"
 async def run_help(func):
