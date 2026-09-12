@@ -16,7 +16,7 @@ async def start_new():
                 url = item.split('#')[0]
                 url_new = url.strip()
                 print(f"{w} = {url_new}", flush=True)
-                W+=1
+                w+=1
                 k=1
                 tt=1
                 while k==1:
