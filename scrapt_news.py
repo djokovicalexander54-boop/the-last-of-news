@@ -114,6 +114,7 @@ async def start_new_02():
             oop = ["https://", line]
             item = "".join(oop)
             url = item.strip()
+            print(url)
             if i==100:
                 break
             else:
