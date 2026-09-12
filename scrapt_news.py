@@ -74,7 +74,7 @@ async def start_new_01():
         i=0
         long_text_economic = ""
         for line in file_EE:
-            url = line.strip()
+            url = line
             print(f"{i}------> economic >>> {url}")
             if i==100:
                 break
@@ -112,7 +112,7 @@ async def start_new_02():
         i=0
         long_text_policy = ""
         for line in file_PP:
-            url = line.strip()
+            url = line
             print(f"{i}------> policy >>> {url}")
             if i==100:
                 break
@@ -150,7 +150,7 @@ async def start_new_03():
         i=0
         long_text_military = ""
         for line in file_MM:
-            url = line.strip()
+            url = line
             print(f"{i}------> military >>> {url}")
             if i==100:
                 break
@@ -189,7 +189,7 @@ async def start_new_04():
         m=1
         long_text_technology = ""
         for line in file_TT:
-            url = line.strip()
+            url = line
             print(f"{i}------> technology >>> {url}")
             if i==100:
                 break
@@ -231,7 +231,7 @@ async def main():
     story_01 = []
     lines = pdf_E.split('\n')
     for line in lines:
-        if line.strip():
+        if line:
             pdf_file = get_display(arabic_reshaper.reshape(line))
             story_01.append(Paragraph(pdf_file, farsi_style))
             story_01.append(Spacer(1, 8))
@@ -240,7 +240,7 @@ async def main():
     story_02 = []
     lines = pdf_P.split('\n')
     for line in lines:
-        if line.strip():
+        if line:
             pdf_file = get_display(arabic_reshaper.reshape(line))
             story_02.append(Paragraph(pdf_file, farsi_style))
             story_02.append(Spacer(1, 8))
@@ -249,7 +249,7 @@ async def main():
     story_03 = []
     lines = pdf_M.split('\n')
     for line in lines:
-        if line.strip():
+        if line:
             pdf_file = get_display(arabic_reshaper.reshape(line))
             story_03.append(Paragraph(pdf_file, farsi_style))
             story_03.append(Spacer(1, 8))
@@ -258,7 +258,7 @@ async def main():
     story_04 = []
     lines = pdf_T.split('\n')
     for line in lines:
-        if line.strip():
+        if line:
             pdf_file = get_display(arabic_reshaper.reshape(line))
             story_04.append(Paragraph(pdf_file, farsi_style))
             story_04.append(Spacer(1, 8))
