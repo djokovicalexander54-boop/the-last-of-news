@@ -8,13 +8,15 @@ import os
 async def start_new():
     with open("economic.txt", "r", encoding="utf-8") as file:
         i=1
+        w=1
         long_text = ""
         for line in file:
             item = line.strip()
             if item.startswith("https://"):
                 url = item.split('#')[0]
                 url_new = url.strip()
-                print(url_new, flush=True)
+                print(f"{w} = {url_new}", flush=True)
+                W+=1
                 k=1
                 tt=1
                 while k==1:
