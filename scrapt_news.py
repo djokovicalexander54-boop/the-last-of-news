@@ -11,7 +11,6 @@ from reportlab.lib.pagesizes import A4
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from flask import Flask
-import threading
 import os
 pdfmetrics.registerFont(TTFont("Vazir", "Vazirmatn-Bold.ttf"))
 # قالب پی دی اف اقتصادی
@@ -266,6 +265,5 @@ app = Flask(__name__)
 def help():
     asyncio.run(main())
 if __name__=='__main__':
-    threading.Thread(target=help, daemon=False).start()
     port = int(os.environ.get('PORT', 10000))
     app.run(port=port, host='0.0.0.0')
