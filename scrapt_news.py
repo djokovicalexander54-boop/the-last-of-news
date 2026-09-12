@@ -76,11 +76,10 @@ async def start_new_01():
         for line in file_EE:
             oop = ["https://", line]
             item = "".join(oop)
-            url = item.strip().replace(" ","")
+            url = item.strip()
             if i==100:
                 break
             else:
-                i+=1
                 m=1
                 while m!=5:
                     try:
@@ -97,6 +96,7 @@ async def start_new_01():
                                 text = data_note.get('text')
                                 long_text_economic+=f"{text}\n--------------------"
                                 print(f'{i}-->economic', flush=True)
+                            i+=1
                             m=5
                     except Exception as e:
                         print(e)
@@ -113,11 +113,10 @@ async def start_new_02():
         for line in file_PP:
             oop = ["https://", line]
             item = "".join(oop)
-            url = item.strip().replace(" ","")
+            url = item.strip()
             if i==100:
                 break
             else:
-                i+=1
                 m=1
                 while m!=5:
                     try:
@@ -134,6 +133,7 @@ async def start_new_02():
                                 text = data_note.get('text')
                                 long_text_policy+=f"{text}\n--------------------"
                                 print(f'{i}-->policy', flush=True)
+                            i+=1
                             m=5
                     except Exception as e:   
                         print(e)  
@@ -150,11 +150,10 @@ async def start_new_03():
         for line in file_MM:
             oop = ["https://", line]
             item = "".join(oop)
-            url = item.strip().replace(" ","")
+            url = item.strip()
             if i==100:
                 break
             else:
-                i+=1
                 m=1
                 while m!=5:
                     try:
@@ -171,6 +170,7 @@ async def start_new_03():
                                 text = data_note.get('text')
                                 long_text_military+=f"{text}\n--------------------"
                                 print(f'{i}-->military', flush=True)
+                            i+=1
                             m=5
                     except Exception as e:   
                         print(e) 
@@ -188,11 +188,10 @@ async def start_new_04():
         for line in file_TT:
             oop = ["https://", line]
             item = "".join(oop)
-            url = item.strip().replace(" ","")
+            url = item.strip()
             if i==100:
                 break
             else:
-                i+=1
                 m=1
                 while m!=5:
                     try:
@@ -209,6 +208,7 @@ async def start_new_04():
                                 text = data_note.get('text')
                                 long_text_technology+=f"{text}\n--------------------"
                                 print(f'{i}-->technology', flush=True)
+                                i+=1
                                 m=5
                     except Exception as e:  
                         print(e) 
