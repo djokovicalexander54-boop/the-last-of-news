@@ -267,5 +267,5 @@ def help():
     asyncio.run(main())
 if __name__=='__main__':
     threading.Thread(target=help, daemon=False).start()
-    port = int(os.environ.get('PORT', 8080))
+    port = int(os.environ.get('PORT', 10000))
     app.run(port=port, host='0.0.0.0')
