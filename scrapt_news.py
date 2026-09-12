@@ -97,27 +97,10 @@ async def start_new_01():
                                 text = data_note.get('text')
                                 long_text_economic+=f"{text}\n--------------------"
                                 print(f'{i}-->economic', flush=True)
-                            elif new_data is None:
-                                print("None economic!!")
-                                j=1
-                                while j<=4:
-                                    print(j)
-                                    j+=1
-                                    await asyncio.sleep(5)
-                                    new_data = trafilatura.extract(
-                                        response.text,
-                                        output_format="json",
-                                        include_comments=False,
-                                        target_language='fa',
-                                    )
-                                    if new_data:
-                                        data_note = json.loads(new_data)
-                                        text = data_note.get('text')
-                                        long_text_technology+=f"{text}\n--------------------"
-                                        print(f'{i}-->economic', flush=True)
                             m=5
                     except Exception as e:
                         print(e)
+                        await asyncio.sleep(5)
                         m+=1
                         continue
     print("ok economic", flush=True)
@@ -151,27 +134,10 @@ async def start_new_02():
                                 text = data_note.get('text')
                                 long_text_policy+=f"{text}\n--------------------"
                                 print(f'{i}-->policy', flush=True)
-                            elif j<=4:
-                                print("None policy!!")
-                                j=1
-                                while new_data is None:
-                                    print(j)
-                                    j+=1
-                                    await asyncio.sleep(5)
-                                    new_data = trafilatura.extract(
-                                        response.text,
-                                        output_format="json",
-                                        include_comments=False,
-                                        target_language='fa',
-                                    )
-                                    if new_data:
-                                        data_note = json.loads(new_data)
-                                        text = data_note.get('text')
-                                        long_text_technology+=f"{text}\n--------------------"
-                                        print(f'{i}-->policy', flush=True)
                             m=5
                     except Exception as e:   
                         print(e)  
+                        await asyncio.sleep(5)
                         m+=1       
                         continue
     print("ok policy", flush=True)
@@ -205,27 +171,10 @@ async def start_new_03():
                                 text = data_note.get('text')
                                 long_text_military+=f"{text}\n--------------------"
                                 print(f'{i}-->military', flush=True)
-                            elif new_data is None:
-                                print("None military!!")
-                                j=1
-                                while j<=4:
-                                    print(j)
-                                    j+=1
-                                    await asyncio.sleep(5)
-                                    new_data = trafilatura.extract(
-                                        response.text,
-                                        output_format="json",
-                                        include_comments=False,
-                                        target_language='fa',
-                                    )
-                                    if new_data:
-                                        data_note = json.loads(new_data)
-                                        text = data_note.get('text')
-                                        long_text_technology+=f"{text}\n--------------------"
-                                        print(f'{i}-->military', flush=True)
                             m=5
                     except Exception as e:   
                         print(e) 
+                        await asyncio.sleep(5)
                         m+=1        
                         continue
     print("ok military", flush=True)
@@ -260,27 +209,10 @@ async def start_new_04():
                                 text = data_note.get('text')
                                 long_text_technology+=f"{text}\n--------------------"
                                 print(f'{i}-->technology', flush=True)
-                            elif new_data is None:
-                                j=1
-                                print("None technology!!")
-                                while j<=4:
-                                    print(j)
-                                    j+=1
-                                    await asyncio.sleep(5)
-                                    new_data = trafilatura.extract(
-                                        response.text,
-                                        output_format="json",
-                                        include_comments=False,
-                                        target_language='fa',
-                                    )
-                                    if new_data:
-                                        data_note = json.loads(new_data)
-                                        text = data_note.get('text')
-                                        long_text_technology+=f"{text}\n--------------------"
-                                        print(f'{i}-->technology', flush=True)
-                            m=5
+                                m=5
                     except Exception as e:  
                         print(e) 
+                        await asyncio.sleep(5)
                         m+=1        
                         continue
     print("ok technology", flush=True)
