@@ -12,10 +12,10 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from flask import Flask
 import os
-pdfmetrics.registerFont(TTFont("Vazir", "Vazirmatn-Bold.ttf"))
+pdfmetrics.registerFont(TTFont("Vazir", "/storage/emulated/0/Documents/Vazirmatn-Bold.ttf"))
 # قالب پی دی اف اقتصادی
 doc_E = SimpleDocTemplate(
-    "pdf_Economic.pdf",
+    "/storage/emulated/0/Documents/pdf_Economic.pdf",
     pagesize=A4,
     rightMargin=30,
     leftMargin=30,
@@ -24,7 +24,7 @@ doc_E = SimpleDocTemplate(
 )
 # قالب پی دی اف سیاسی
 doc_P = SimpleDocTemplate(
-    "pdf_Policy.pdf",
+    "/storage/emulated/0/Documents/pdf_Policy.pdf",
     pagesize=A4,
     rightMargin=30,
     leftMargin=30,
@@ -33,7 +33,7 @@ doc_P = SimpleDocTemplate(
 )
 # قالب پی دی اف نظامی
 doc_M = SimpleDocTemplate(
-    "pdf_Military.pdf",
+    "/storage/emulated/0/Documents/pdf_Military.pdf",
     pagesize=A4,
     rightMargin=30,
     leftMargin=30,
@@ -42,7 +42,7 @@ doc_M = SimpleDocTemplate(
 )
 # قالب پی دی اف تکنولوژی
 doc_T = SimpleDocTemplate(
-    "pdf_Technology.pdf",
+    "/storage/emulated/0/Documents/pdf_Technology.pdf",
     pagesize=A4,
     rightMargin=30,
     leftMargin=30,
@@ -69,7 +69,7 @@ english_style = ParagraphStyle(
 scraper = cloudscraper.create_scraper(browser={'browser':'chrome', 'platform':'windows','desktop':True})
 async def start_new_01():
     # economic
-    with open("economic.txt", "r", encoding="utf-8") as file:
+    with open("/storage/emulated/0/Documents/economic.txt", "r", encoding="utf-8") as file:
         i=1
         k=1
         while k==1:
@@ -102,7 +102,7 @@ async def start_new_01():
     return long_text_economic
 async def start_new_02():
     # policy
-    with open("policy.txt", "r", encoding="utf-8") as file:
+    with open("/storage/emulated/0/Documents/policy.txt", "r", encoding="utf-8") as file:
         i=1
         k=1
         while k==1:
@@ -135,7 +135,7 @@ async def start_new_02():
     return long_text_policy
 async def start_new_03():
     # military
-    with open("military.txt", "r", encoding="utf-8") as file:
+    with open("/storage/emulated/0/Documents/military.txt", "r", encoding="utf-8") as file:
         i=1
         k=1
         while k==1:
@@ -168,7 +168,7 @@ async def start_new_03():
     return long_text_military
 async def start_new_04():
     # technology
-    with open("technology.txt", "r", encoding="utf-8") as file:
+    with open("/storage/emulated/0/Documents/technology.txt", "r", encoding="utf-8") as file:
         i=1
         k=1
         while k==1:
