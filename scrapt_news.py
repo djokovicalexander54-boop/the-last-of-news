@@ -76,7 +76,8 @@ async def start_new_01():
         for line in file_EE:
             oop = ["https://", line]
             item = "".join(oop)
-            url = item.strip().replace(" ","")
+            url = item.strip()
+            print(f"{i}------> economic >>> {url}")
             if i==100:
                 break
             else:
@@ -98,6 +99,8 @@ async def start_new_01():
                                 print(f'{i}-->economic', flush=True)
                             i+=1
                             m=5
+                        else:
+                            m+=1
                     except Exception as e:
                         print(e)
                         await asyncio.sleep(5)
@@ -113,8 +116,8 @@ async def start_new_02():
         for line in file_PP:
             oop = ["https://", line]
             item = "".join(oop)
-            url = item.strip().replace(" ","")
-            print(url)
+            url = item.strip()
+            print(f"{i}------> policy >>> {url}")
             if i==100:
                 break
             else:
@@ -136,6 +139,8 @@ async def start_new_02():
                                 print(f'{i}-->policy', flush=True)
                             i+=1
                             m=5
+                        else:
+                            m+=1
                     except Exception as e:   
                         print(e)  
                         await asyncio.sleep(5)
@@ -151,7 +156,8 @@ async def start_new_03():
         for line in file_MM:
             oop = ["https://", line]
             item = "".join(oop)
-            url = item.strip().replace(" ","")
+            url = item.strip()
+            print(f"{i}------> military >>> {url}")
             if i==100:
                 break
             else:
@@ -173,6 +179,8 @@ async def start_new_03():
                                 print(f'{i}-->military', flush=True)
                             i+=1
                             m=5
+                        else:
+                            m+=1
                     except Exception as e:   
                         print(e) 
                         await asyncio.sleep(5)
@@ -189,7 +197,8 @@ async def start_new_04():
         for line in file_TT:
             oop = ["https://", line]
             item = "".join(oop)
-            url = item.strip().replace(" ","")
+            url = item.strip()
+            print(f"{i}------> technology >>> {url}")
             if i==100:
                 break
             else:
@@ -211,6 +220,8 @@ async def start_new_04():
                                 print(f'{i}-->technology', flush=True)
                                 i+=1
                                 m=5
+                        else:
+                            m+=1
                     except Exception as e:  
                         print(e) 
                         await asyncio.sleep(5)
