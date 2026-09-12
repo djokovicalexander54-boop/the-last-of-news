@@ -74,9 +74,7 @@ async def start_new_01():
         i=0
         long_text_economic = ""
         for line in file_EE:
-            oop = ["https://", line]
-            item = "".join(oop)
-            url = item.strip()
+            url = line.strip()
             print(f"{i}------> economic >>> {url}")
             if i==100:
                 break
@@ -114,9 +112,7 @@ async def start_new_02():
         i=0
         long_text_policy = ""
         for line in file_PP:
-            oop = ["https://", line]
-            item = "".join(oop)
-            url = item.strip()
+            url = line.strip()
             print(f"{i}------> policy >>> {url}")
             if i==100:
                 break
@@ -154,9 +150,7 @@ async def start_new_03():
         i=0
         long_text_military = ""
         for line in file_MM:
-            oop = ["https://", line]
-            item = "".join(oop)
-            url = item.strip()
+            url = line.strip()
             print(f"{i}------> military >>> {url}")
             if i==100:
                 break
@@ -195,9 +189,7 @@ async def start_new_04():
         m=1
         long_text_technology = ""
         for line in file_TT:
-            oop = ["https://", line]
-            item = "".join(oop)
-            url = item.strip()
+            url = line.strip()
             print(f"{i}------> technology >>> {url}")
             if i==100:
                 break
