@@ -76,7 +76,7 @@ async def start_new_01():
         for line in file_EE:
             oop = ["https://", line]
             item = "".join(oop)
-            url = item.strip()
+            url = item.strip().replace(" ","")
             if i==100:
                 break
             else:
@@ -113,7 +113,7 @@ async def start_new_02():
         for line in file_PP:
             oop = ["https://", line]
             item = "".join(oop)
-            url = item.strip()
+            url = item.strip().replace(" ","")
             print(url)
             if i==100:
                 break
@@ -151,7 +151,7 @@ async def start_new_03():
         for line in file_MM:
             oop = ["https://", line]
             item = "".join(oop)
-            url = item.strip()
+            url = item.strip().replace(" ","")
             if i==100:
                 break
             else:
@@ -189,7 +189,7 @@ async def start_new_04():
         for line in file_TT:
             oop = ["https://", line]
             item = "".join(oop)
-            url = item.strip()
+            url = item.strip().replace(" ","")
             if i==100:
                 break
             else:
