@@ -14,6 +14,7 @@ async def start_new():
             if item.startswith("https://"):
                 url = item.split('#')[0]
                 url_new = url.strip()
+                print(url_new, flush=True)
                 k=1
                 tt=1
                 while k==1:
