@@ -10,6 +10,9 @@ from bidi.algorithm import get_display
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
+from flask import Flask
+import threading
+import os
 pdfmetrics.registerFont(TTFont("Vazir", "Vazirmatn-Bold.ttf"))
 # قالب پی دی اف اقتصادی
 doc_E = SimpleDocTemplate(
@@ -325,4 +328,11 @@ async def main():
             story_04.append(Spacer(1, 8))
     doc_T.build(story_04)
     print("ok pdf technology", flush=True)
-asyncio.run(main())
+app = Flask(__name__)
+@app.route("/")
+def help():
+    asyncio.run(main())
+if __name__=='__main__':
+    threading.Thread(target=help, daemon=False).start()
+    port = int(os.environ.get('PORT', 8080))
+    app.run(port=port, host='0.0.0.0')
