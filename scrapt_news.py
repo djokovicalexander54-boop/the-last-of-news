@@ -10,12 +10,10 @@ from bidi.algorithm import get_display
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from flask import Flask
-import os
-pdfmetrics.registerFont(TTFont("Vazir", "/storage/emulated/0/Documents/Vazirmatn-Bold.ttf"))
+pdfmetrics.registerFont(TTFont("Vazir", "Vazirmatn-Bold.ttf"))
 # قالب پی دی اف اقتصادی
 doc_E = SimpleDocTemplate(
-    "/storage/emulated/0/Documents/pdf_Economic.pdf",
+    "pdf_Economic.pdf",
     pagesize=A4,
     rightMargin=30,
     leftMargin=30,
@@ -24,7 +22,7 @@ doc_E = SimpleDocTemplate(
 )
 # قالب پی دی اف سیاسی
 doc_P = SimpleDocTemplate(
-    "/storage/emulated/0/Documents/pdf_Policy.pdf",
+    "pdf_Policy.pdf",
     pagesize=A4,
     rightMargin=30,
     leftMargin=30,
@@ -33,7 +31,7 @@ doc_P = SimpleDocTemplate(
 )
 # قالب پی دی اف نظامی
 doc_M = SimpleDocTemplate(
-    "/storage/emulated/0/Documents/pdf_Military.pdf",
+    "pdf_Military.pdf",
     pagesize=A4,
     rightMargin=30,
     leftMargin=30,
@@ -42,7 +40,7 @@ doc_M = SimpleDocTemplate(
 )
 # قالب پی دی اف تکنولوژی
 doc_T = SimpleDocTemplate(
-    "/storage/emulated/0/Documents/pdf_Technology.pdf",
+    "pdf_Technology.pdf",
     pagesize=A4,
     rightMargin=30,
     leftMargin=30,
@@ -69,134 +67,219 @@ english_style = ParagraphStyle(
 scraper = cloudscraper.create_scraper(browser={'browser':'chrome', 'platform':'windows','desktop':True})
 async def start_new_01():
     # economic
-    with open("/storage/emulated/0/Documents/economic.txt", "r", encoding="utf-8") as file:
-        i=1
-        k=1
-        while k==1:
-            try:
-                long_text_economic = ""
-                for line in file:
-                    oop = ["https://", line]
-                    item = "".join(oop)
-                    url = item.strip().replace(" ","")
-                    response = await asyncio.wait_for(asyncio.to_thread(scraper.get, url, timeout=(5,10)), timeout=10)
-                    if response.status_code == 200:
-                        new_data = trafilatura.extract(
-                            response.text,
-                            output_format="json",
-                            include_comments=False,
-                            target_language='fa',
-                        )
-                    if new_data:
-                        data_note = json.loads(new_data)
-                        text = data_note.get('text')
-                        long_text_economic+=f"{text}\n--------------------"
-                        print(f'{i}-->economic', flush=True)
-                        i+=1
-                        if i==226:
-                            k=2 
-                            break
-            except Exception as e:
-                continue
+    with open("economic.txt", "r", encoding="utf-8") as file_EE:
+        i=0
+        long_text_economic = ""
+        for line in file_EE:
+            oop = ["https://", line]
+            item = "".join(oop)
+            url = item.strip().replace(" ","")
+            if i==100:
+                break
+            else:
+                i+=1
+                m=1
+                while m!=5:
+                    try:
+                        response = await asyncio.wait_for(asyncio.to_thread(scraper.get, url, timeout=(5,10)), timeout=10)
+                        if response.status_code == 200:
+                            new_data = trafilatura.extract(
+                                response.text,
+                                output_format="json",
+                                include_comments=False,
+                                target_language='fa',
+                            )
+                            if new_data:
+                                data_note = json.loads(new_data)
+                                text = data_note.get('text')
+                                long_text_economic+=f"{text}\n--------------------"
+                                print(f'{i}-->economic', flush=True)
+                            elif new_data is None:
+                                print("None economic!!")
+                                j=1
+                                while j<=4:
+                                    print(j)
+                                    j+=1
+                                    await asyncio.sleep(5)
+                                    new_data = trafilatura.extract(
+                                        response.text,
+                                        output_format="json",
+                                        include_comments=False,
+                                        target_language='fa',
+                                    )
+                                    if new_data:
+                                        data_note = json.loads(new_data)
+                                        text = data_note.get('text')
+                                        long_text_technology+=f"{text}\n--------------------"
+                                        print(f'{i}-->economic', flush=True)
+                            m=5
+                    except Exception as e:
+                        print(e)
+                        m+=1
+                        continue
     print("ok economic", flush=True)
     return long_text_economic
 async def start_new_02():
     # policy
-    with open("/storage/emulated/0/Documents/policy.txt", "r", encoding="utf-8") as file:
-        i=1
-        k=1
-        while k==1:
-            try:
-                long_text_policy = ""
-                for line in file:
-                    oop = ["https://", line]
-                    item = "".join(oop)
-                    url = item.strip()
-                    response = await asyncio.wait_for(asyncio.to_thread(scraper.get, url, timeout=(5,10)), timeout=10)
-                    if response.status_code == 200:
-                        new_data = trafilatura.extract(
-                            response.text,
-                            output_format="json",
-                            include_comments=False,
-                            target_language='fa',
-                        )
-                    if new_data:
-                        data_note = json.loads(new_data)
-                        text = data_note.get('text')
-                        long_text_policy+=f"{text}\n--------------------"
-                        print(f'{i}-->policy', flush=True)
-                        i+=1
-                        if i==226:
-                            k=2 
-                            break
-            except Exception as e:            
-                continue
+    with open("policy.txt", "r", encoding="utf-8") as file_PP:
+        i=0
+        long_text_policy = ""
+        for line in file_PP:
+            oop = ["https://", line]
+            item = "".join(oop)
+            url = item.strip().replace(" ","")
+            if i==100:
+                break
+            else:
+                i+=1
+                m=1
+                while m!=5:
+                    try:
+                        response = await asyncio.wait_for(asyncio.to_thread(scraper.get, url, timeout=(5,10)), timeout=10)
+                        if response.status_code == 200:
+                            new_data = trafilatura.extract(
+                                response.text,
+                                output_format="json",
+                                include_comments=False,
+                                target_language='fa',
+                            )
+                            if new_data:
+                                data_note = json.loads(new_data)
+                                text = data_note.get('text')
+                                long_text_policy+=f"{text}\n--------------------"
+                                print(f'{i}-->policy', flush=True)
+                            elif j<=4:
+                                print("None policy!!")
+                                j=1
+                                while new_data is None:
+                                    print(j)
+                                    j+=1
+                                    await asyncio.sleep(5)
+                                    new_data = trafilatura.extract(
+                                        response.text,
+                                        output_format="json",
+                                        include_comments=False,
+                                        target_language='fa',
+                                    )
+                                    if new_data:
+                                        data_note = json.loads(new_data)
+                                        text = data_note.get('text')
+                                        long_text_technology+=f"{text}\n--------------------"
+                                        print(f'{i}-->policy', flush=True)
+                            m=5
+                    except Exception as e:   
+                        print(e)  
+                        m+=1       
+                        continue
     print("ok policy", flush=True)
     return long_text_policy
 async def start_new_03():
     # military
-    with open("/storage/emulated/0/Documents/military.txt", "r", encoding="utf-8") as file:
-        i=1
-        k=1
-        while k==1:
-            try:
-                long_text_military = ""
-                for line in file:
-                    oop = ["https://", line]
-                    item = "".join(oop)
-                    url = item.strip()
-                    response = await asyncio.wait_for(asyncio.to_thread(scraper.get, url, timeout=(5,10)), timeout=10)
-                    if response.status_code == 200:
-                        new_data = trafilatura.extract(
-                            response.text,
-                            output_format="json",
-                            include_comments=False,
-                            target_language='fa',
-                        )
-                    if new_data:
-                        data_note = json.loads(new_data)
-                        text = data_note.get('text')
-                        long_text_military+=f"{text}\n--------------------"
-                        print(f'{i}-->military', flush=True)
-                        i+=1
-                        if i==226:
-                            k=2 
-                            break
-            except Exception as e:            
-                continue
+    with open("military.txt", "r", encoding="utf-8") as file_MM:
+        i=0
+        long_text_military = ""
+        for line in file_MM:
+            oop = ["https://", line]
+            item = "".join(oop)
+            url = item.strip().replace(" ","")
+            if i==100:
+                break
+            else:
+                i+=1
+                m=1
+                while m!=5:
+                    try:
+                        response = await asyncio.wait_for(asyncio.to_thread(scraper.get, url, timeout=(5,10)), timeout=10)
+                        if response.status_code == 200:
+                            new_data = trafilatura.extract(
+                                response.text,
+                                output_format="json",
+                                include_comments=False,
+                                target_language='fa',
+                            )
+                            if new_data:
+                                data_note = json.loads(new_data)
+                                text = data_note.get('text')
+                                long_text_military+=f"{text}\n--------------------"
+                                print(f'{i}-->military', flush=True)
+                            elif new_data is None:
+                                print("None military!!")
+                                j=1
+                                while j<=4:
+                                    print(j)
+                                    j+=1
+                                    await asyncio.sleep(5)
+                                    new_data = trafilatura.extract(
+                                        response.text,
+                                        output_format="json",
+                                        include_comments=False,
+                                        target_language='fa',
+                                    )
+                                    if new_data:
+                                        data_note = json.loads(new_data)
+                                        text = data_note.get('text')
+                                        long_text_technology+=f"{text}\n--------------------"
+                                        print(f'{i}-->military', flush=True)
+                            m=5
+                    except Exception as e:   
+                        print(e) 
+                        m+=1        
+                        continue
     print("ok military", flush=True)
     return long_text_military
 async def start_new_04():
     # technology
-    with open("/storage/emulated/0/Documents/technology.txt", "r", encoding="utf-8") as file:
-        i=1
-        k=1
-        while k==1:
-            try:
-                long_text_technology = ""
-                for line in file:
-                    oop = ["https://", line]
-                    item = "".join(oop)
-                    url = item.strip()
-                    response = await asyncio.wait_for(asyncio.to_thread(scraper.get, url, timeout=(5,10)), timeout=10)
-                    if response.status_code == 200:
-                        new_data = trafilatura.extract(
-                            response.text,
-                            output_format="json",
-                            include_comments=False,
-                            target_language='fa',
-                        )
-                    if new_data:
-                        data_note = json.loads(new_data)
-                        text = data_note.get('text')
-                        long_text_technology+=f"{text}\n--------------------"
-                        print(f'{i}-->technology', flush=True)
-                        i+=1
-                        if i==226:
-                            k=2 
-                            break
-            except Exception as e:            
-                continue
+    with open("technology.txt", "r", encoding="utf-8") as file_TT:
+        i=0
+        m=1
+        long_text_technology = ""
+        for line in file_TT:
+            oop = ["https://", line]
+            item = "".join(oop)
+            url = item.strip().replace(" ","")
+            if i==100:
+                break
+            else:
+                i+=1
+                m=1
+                while m!=5:
+                    try:
+                        response = await asyncio.wait_for(asyncio.to_thread(scraper.get, url, timeout=(5,10)), timeout=10)
+                        if response.status_code == 200:
+                            new_data = trafilatura.extract(
+                                response.text,
+                                output_format="json",
+                                include_comments=False,
+                                target_language='fa',
+                            )
+                            if new_data:
+                                data_note = json.loads(new_data)
+                                text = data_note.get('text')
+                                long_text_technology+=f"{text}\n--------------------"
+                                print(f'{i}-->technology', flush=True)
+                            elif new_data is None:
+                                j=1
+                                print("None technology!!")
+                                while j<=4:
+                                    print(j)
+                                    j+=1
+                                    await asyncio.sleep(5)
+                                    new_data = trafilatura.extract(
+                                        response.text,
+                                        output_format="json",
+                                        include_comments=False,
+                                        target_language='fa',
+                                    )
+                                    if new_data:
+                                        data_note = json.loads(new_data)
+                                        text = data_note.get('text')
+                                        long_text_technology+=f"{text}\n--------------------"
+                                        print(f'{i}-->technology', flush=True)
+                            m=5
+                    except Exception as e:  
+                        print(e) 
+                        m+=1        
+                        continue
     print("ok technology", flush=True)
     return long_text_technology
 async def main():
@@ -242,10 +325,4 @@ async def main():
             story_04.append(Spacer(1, 8))
     doc_T.build(story_04)
     print("ok pdf technology", flush=True)
-appp = Flask(__name__)
-@appp.route("/")
-def help():
-    asyncio.run(main())
-if __name__ == '__main__':
-    port = int(os.environ.get("PORT",8080))
-    appp.run(host="0.0.0.0", port=port)
+asyncio.run(main())
