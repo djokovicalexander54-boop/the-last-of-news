@@ -144,9 +144,8 @@ async def main():
 app = Flask(__name__)
 @app.route("/")
 def home():
-    asyncio.run(main())
-def starting():
+    result = asyncio.run(main())
+    return result
+if __name__ == '__main__':
     port = int(os.environ.get("PORT", 10000))
     app.run(port=port, host='0.0.0.0')
-if __name__ == '__main__':
-    threading.Thread(target=starting).start()
