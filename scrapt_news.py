@@ -144,10 +144,7 @@ async def main():
 app = Flask(__name__)
 @app.route("/")
 def home():
-    return "running scrapt news..."
-def starting():
     asyncio.run(main())
 if __name__ == '__main__':
-    threading.Thread(target=starting).start()
     port = int(os.environ("PORT", 8080))
     app.run(port=port, host='0.0.0.0')
