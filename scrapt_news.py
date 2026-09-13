@@ -15,7 +15,7 @@ async def start_new_01():
             url = line.strip()
             if url.startswith("https://"):
                 new_url = url.strip()
-                print(f"{i} {new_url}")
+                print(f"{i} {new_url}", flush=True)
                 i+=1
                 try:
                     response = await asyncio.wait_for(asyncio.to_thread(scraper.get, new_url, timeout=(5,10)), timeout=10)
@@ -30,9 +30,9 @@ async def start_new_01():
                             data_note = json.loads(new_data)
                             text = data_note.get('text')
                             long_text_economic+=f"{text} \n -------------------- \n"
-                            print("ok this..")
+                            print("ok this..", flush=True)
                 except Exception as e:
-                    print(e)
+                    print(e, flush=True)
     print("ok economic", flush=True)
     return long_text_economic
 async def start_new_02():
@@ -44,7 +44,7 @@ async def start_new_02():
             url = line.strip()
             if url.startswith("https://"):
                 new_url = url.strip()
-                print(f"{i} {new_url}")
+                print(f"{i} {new_url}", flush=True)
                 i+=1
                 try:
                     response = await asyncio.wait_for(asyncio.to_thread(scraper.get, new_url, timeout=(5,10)), timeout=10)
@@ -59,9 +59,9 @@ async def start_new_02():
                             data_note = json.loads(new_data)
                             text = data_note.get('text')
                             long_text_policy+=f"{text}\n--------------------"
-                            print("ok this..")
+                            print("ok this..", flush=True)
                 except Exception as e:   
-                    print(e)  
+                    print(e, flush=True)  
     print("ok policy", flush=True)
     return long_text_policy
 async def start_new_03():
@@ -73,7 +73,7 @@ async def start_new_03():
             url = line.strip()
             if url.startswith("https://"):
                 new_url = url.strip()
-                print(f"{i} {new_url}")
+                print(f"{i} {new_url}", flush=True)
                 i+=1
                 try:
                     response = await asyncio.wait_for(asyncio.to_thread(scraper.get, new_url, timeout=(5,10)), timeout=10)
@@ -88,9 +88,9 @@ async def start_new_03():
                             data_note = json.loads(new_data)
                             text = data_note.get('text')
                             long_text_military+=f"{text}\n--------------------"
-                            print("ok this..")
+                            print("ok this..", flush=True)
                 except Exception as e:   
-                    print(e) 
+                    print(e, flush=True) 
     print("ok military", flush=True)
     return long_text_military
 async def start_new_04():
@@ -102,7 +102,7 @@ async def start_new_04():
             url = line.strip()
             if url.startswith("https://"):
                 new_url = url.strip()
-                print(f"{i} {new_url}")
+                print(f"{i} {new_url}", flush=True)
                 i+=1
                 try:
                     response = await asyncio.wait_for(asyncio.to_thread(scraper.get, new_url, timeout=(5,10)), timeout=10)
@@ -117,9 +117,9 @@ async def start_new_04():
                             data_note = json.loads(new_data)
                             text = data_note.get('text')
                             long_text_technology+=f"{text}\n--------------------"
-                            print(f"ok this..")
+                            print(f"ok this..", flush=True)
                 except Exception as e:  
-                    print(e) 
+                    print(e, flush=True) 
     print("ok technology", flush=True)
     return long_text_technology
 async def main():
@@ -144,8 +144,10 @@ async def main():
 app = Flask(__name__)
 @app.route("/")
 def home():
-    result = asyncio.run(main())
-    return result
+    return "running bot..."
+def scrapt():
+    asyncio.run(main())
 if __name__ == '__main__':
+    threading.Thread(target=scrapt, daemon=True).start()
     port = int(os.environ.get("PORT", 10000))
-    app.run(port=port, host='0.0.0.0')
+    app.run(host='0.0.0.0', port=port)
